@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="../css/sortVisualizerStyle.css">
+</head>
+
+<body>
+    <h1>Sorting Visualizer</h1>
+    <div id="container"></div>
+
+    <p>Welocome to the Sorting Visualizer! Enter your input and then press the initialize button to initialize your visual. After, press the play button to watch the sorting process!</p><br><br>
+
+    <p>The recommended values to input in order  to learn the sorting techniques is 5 for number of random digits and 2000ms for speed of sort</p><br><br>
+
+    <hr>
+
+    <div>
+        <form id="form">
+            <label for="numOfDigits">Number of random digits to be sorted 2-100</label>
+            <input type="number" id="numOfDigits" min="2" max="2000"><br><br>
+            <label for="speed">Speed of sort 2000ms (slow) - 1ms (fast)</label>
+            <input type="number" id="speed" min="1" max="100"><br><br>
+        </form>
+        <div class="button-container">
+            <button onclick="init()" onclick="getInputValues(event)">Initialize</button>
+            <button onclick="play()">Play</button><br><br>
+        </div>
+    </div>
+
+    <script src="../js/sortVisualizerScript.js"></script>
+</body>
+
+<footer>
+    <a href="index.html">Home</a>
+</footer>
+
+</html>
