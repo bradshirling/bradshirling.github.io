@@ -2,6 +2,12 @@ const array = [];
 let audioCtx = null;
 let sorting = false;
 
+const sortAlgorithms = {
+    bubbleSort,
+    //mergeSort,
+    // Add more algorithms here as needed
+};
+
 function getInputValues() {
     const n = parseInt(document.getElementById("numOfDigits").value);
     const s = parseInt(document.getElementById("speed").value);
@@ -55,15 +61,22 @@ function init() {
 
 function play() {
     let { s } = getInputValues();
-    s = s || 50;  // Default speed
-    
+    s = s || 50;
+
     const sortMethod = document.getElementById("sortMethod").value;
+    const sortFunction = sortAlgorithms[sortMethod];
+
+    if (!sortFunction) {
+        alert("Invalid sorting algorithm selected");
+        return;
+    }
+
     document.querySelector('button[onclick="play()"]').disabled = true;
     sorting = true;
-    
+
     const copy = [...array];
-    let moves = sortMethod === "bubbleSort" ? bubbleSort(copy) : mergeSort(copy);  // Assuming mergeSort is defined elsewhere
-    
+    let moves = sortFunction(copy);
+
     document.getElementById("form").reset();
     animate(moves, s);
 }
