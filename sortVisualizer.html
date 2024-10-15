@@ -16,17 +16,19 @@
     <hr>
 
     <div>
+        <div class="button-container">
+            <label for="sortMethod">Sorting Algorithm:</label><br><br>
+            <select id="sortMethod">
+                <option value="bubbleSort">Bubble Sort</option>
+                <option value="mergeSort">Merge Sort</option>
+            </select>
+        </div>
         <form id="form">
-            <label for="numOfDigits">Number of random digits to be sorted 2-100</label>
-            <input type="number" id="numOfDigits" min="2" max="2000"><br><br>
-            <label for="speed">Speed of sort 2000ms (slow) - 1ms (fast)</label>
-            <input type="number" id="speed" min="1" max="100"><br><br>
+            <label for="numOfDigits">Number of random digits to be sorted 2-100:</label>
+            <input type="number" id="numOfDigits" min="2" max="100"><br><br>
+            <label for="speed">Speed of sort 2000ms (slow) - 20ms (fast):</label>
+            <input type="number" id="speed" min="20" max="2000"><br><br>
         </form>
-        <label for="sortMethod">Sorting Algorithm:</label>
-        <select id="sortMethod">
-            <option value="bubbleSort">Bubble Sort</option>
-            <option value="mergeSort">Merge Sort</option>
-        </select>
         <div class="button-container">
             <button onclick="init()" onclick="getInputValues(event)">Initialize</button>
             <button onclick="play()">Play</button><br><br>

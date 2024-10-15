@@ -7,6 +7,18 @@ let sorting = false;
 function getInputValues(){
     const n =parseInt(document.getElementById("numOfDigits").value);
     const s =parseInt(document.getElementById("speed").value);
+
+    if (isNaN(n) || isNaN(s)) {
+        alert("Please enter valid values");
+        return {n:0,s:0};
+    }else if(n<2 || n>100){
+        alert("Please enter a number of digits between 2 and 100");
+        return {n:0,s:0};
+    }else if(s<20 || s>2000){
+        alert("Please enter a speed between 20 and 2000");
+        return {n:0,s:0};
+    }
+
     return {n,s};
 }
 
