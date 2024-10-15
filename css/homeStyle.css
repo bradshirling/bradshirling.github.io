@@ -33,7 +33,7 @@ section {
     padding: 3rem;
     margin: 2rem auto;
     max-width: 1200px;
-    background-color: white;
+    background-color: rgb(226, 226, 226);
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
@@ -46,7 +46,7 @@ h2 {
 
 
 .project {
-    background-color: #fdfdfd;
+    background-color: #f2f2f2;
     padding: 2rem;
     border-radius: 10px;
     margin-bottom: 1.5rem;
@@ -111,7 +111,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive Layout */
 @media (max-width: 768px) {
     section {
         padding: 1.5rem;
