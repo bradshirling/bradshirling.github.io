@@ -4,42 +4,37 @@
     padding: 0;
 }
 
-
 html, body {
-    /*height: 100%;*/
     margin: 0;
     padding: 0;
 }
 
-
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    padding: 20px;
     background: linear-gradient(to bottom right, #f0f0f0, #cccccc);
     font-family: 'Roboto', sans-serif;
-    padding: 20px;
     color: #333;
     transition: background-color 0.3s ease;
 }
 
-
 #container {
-    height: 500px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 4px;
-    margin: 20px 0;
     width: 100%;
     max-width: 1250px;
+    height: 500px;
+    gap: 4px;
+    margin: 20px 0;
     padding: 10px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
 
 .bar {
     width: 12px;
@@ -53,14 +48,12 @@ body {
     background-color: #357ABD;
 }
 
-
 .button-container {
     text-align: center;
     margin: 20px 0;
 }
 
-
-button {
+button, select {
     color: white;
     background-color: #333;
     border: none;
@@ -72,24 +65,7 @@ button {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-select {
-    color: white;
-    background-color: #333;
-    border: none;
-    padding: 6px 12px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-select:hover {
-    background-color: #555;
-    transform: translateY(-3px);
-}
-
-button:hover {
+button:hover, select:hover {
     background-color: #555;
     transform: translateY(-3px);
 }
@@ -98,7 +74,6 @@ button:active {
     background-color: #111;
     transform: translateY(0);
 }
-
 
 @media (max-width: 768px) {
     #container {
@@ -112,4 +87,3 @@ button:active {
         padding: 10px;
     }
 }
-

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Visualizer</title>
     <link rel="stylesheet" href="../css/sortVisualizerStyle.css">
 </head>
 
 <body>
     <h1>Sorting Visualizer</h1>
+
     <div id="container"></div>
 
     <p>Welcome to the Sorting Visualizer! Enter your input and then press the initialize button to initialize your visual. After, press the play button to watch the sorting process!</p><br><br>
@@ -23,12 +26,15 @@
                 <option value="mergeSort">Merge Sort</option>
             </select>
         </div>
+        
         <form id="form">
             <label for="numOfDigits">Number of random digits to be sorted 2-100:</label>
             <input type="number" id="numOfDigits" min="2" max="100"><br><br>
+            
             <label for="speed">Speed of sort 2000ms (slow) - 20ms (fast):</label>
             <input type="number" id="speed" min="20" max="2000"><br><br>
         </form>
+
         <div class="button-container">
             <button onclick="init()" onclick="getInputValues(event)">Initialize</button>
             <button onclick="play()">Play</button><br><br>
