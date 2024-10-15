@@ -44,17 +44,27 @@ function init(){
     showBars();
 }
 
-function play(){
+function play() {
     let { s } = getInputValues();
     if (!s || s == 0) {
         s = 50;
     }
+
+    const sortMethod = document.getElementById("sortMethod").value;
     document.querySelector('button[onclick="play()"]').disabled = true;
     sorting = true;
-    const copy=[...array];
-    const moves=bubbleSort(copy);
+
+    const copy = [...array];
+    let moves;
+    
+    if (sortMethod === "bubbleSort") {
+        moves = bubbleSort(copy);
+    } else if (sortMethod === "mergeSort") {
+        moves = mergeSort(copy);
+    }
+
     document.getElementById("form").reset();
-    animate(moves,s);
+    animate(moves, s);
 }
 
 function animate(moves, s){
