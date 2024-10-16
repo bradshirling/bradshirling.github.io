@@ -25,6 +25,22 @@ function getInputValues() {
     return { n, s };
 }
 
+function showBars(move) {
+    container.innerHTML = "";
+
+    array.forEach((value, i) => {
+        const bar = document.createElement("div");
+        bar.style.height = value * 100 + "%";
+        bar.classList.add("bar");
+
+        if (move && move.indices.includes(i)) {
+            bar.style.backgroundColor = move.type === "swap" ? "red" : "blue";
+        }
+
+        container.appendChild(bar);
+    });
+}
+
 const playNote = (freq) => {
     if (!audioCtx) {
         audioCtx = new (AudioContext || webkitAudioContext)();
@@ -37,7 +53,7 @@ const playNote = (freq) => {
     osc.stop(audioCtx.currentTime + duration);
 
     const gainNode = audioCtx.createGain();
-    gainNode.gain.value = 0.1;
+    gainNode.gain.value = 0.05;
     gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + duration);
 
     osc.connect(gainNode);
@@ -49,8 +65,7 @@ function init() {
 
     document.querySelector('button[onclick="play()"]').disabled = false;
     const { n } = getInputValues();
-    if (n === 0) return;  // Don't proceed if input is invalid
-
+    if (n === 0) return;
     array.length = 0;
     container.innerHTML = "";
 
@@ -63,7 +78,7 @@ function init() {
 
 function play() {
     let { s } = getInputValues();
-    if (s === 0) return;  // Invalid input, stop the function
+    if (s === 0) return;
 
     const sortMethod = document.getElementById("sortMethod").value;
     const sortFunction = sortAlgorithms[sortMethod];
@@ -98,8 +113,11 @@ function animate(moves, s) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 
-    playNote(200 + array[i] * 500);
-    playNote(200 + array[j] * 500);
+    const freqI = 200 + array[i] * 500;
+    const freqJ = 200 + array[j] * 500;
+
+    if (isFinite(freqI)) playNote(freqI);
+    if (isFinite(freqJ)) playNote(freqJ);
     showBars(move);
 
     setTimeout(() => animate(moves, s), s);
@@ -245,20 +263,4 @@ function selectionSort(array) {
     }
 
     return moves;
-}
-
-function showBars(move) {
-    container.innerHTML = "";
-
-    array.forEach((value, i) => {
-        const bar = document.createElement("div");
-        bar.style.height = value * 100 + "%";
-        bar.classList.add("bar");
-
-        if (move && move.indices.includes(i)) {
-            bar.style.backgroundColor = move.type === "swap" ? "red" : "blue";
-        }
-
-        container.appendChild(bar);
-    });
 }
