@@ -231,39 +231,60 @@ button:disabled {
 
 @media (max-width: 1024px) {
     #container {
-        max-width: 100%;
-        height: 400px;
+        max-width: 95%;
+        height: 45vh;
+    }
+    
+    .controls-panel {
+        grid-template-columns: 1fr 2fr;
+        max-width: 95%;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 5px;
+        padding: 10px;
         overflow-y: auto;
     }
 
     .controls-panel {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     #container {
-        height: 35vh;
-        padding: 5px;
+        height: 40vh;
+        padding: 8px;
     }
 
-    button {
-        width: 100%;
-        padding: 10px;
+    .playback-controls {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stats-panel {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     #container {
-        height: 200px;
-        gap: 2px;
+        height: 35vh;
+        gap: 1px;
     }
 
     .bar {
-        width: 8px;
+        width: 6px;
+    }
+
+    .algorithm-info-card,
+    .visualization-controls {
+        padding: 8px;
+    }
+
+    button, select {
+        padding: 8px 16px;
+        font-size: 0.9rem;
     }
 }
