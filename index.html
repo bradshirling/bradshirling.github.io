@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bradley Shirling Portfolio</title>
-    <link rel="stylesheet" href="../css/homeStyle.css">
+    <link rel="stylesheet" href="css/homeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Bradley Shirling</h1>
-        <p>Computer Science | Software Engineer</p>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Bradley Shirling</h1>
+            <p class="title">Software Engineer & Problem Solver</p>
+            <div class="social-links">
+                <a href="https://github.com/bradshirling" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/bradley-shirling/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
@@ -18,41 +25,127 @@
         </nav>
     </header>
 
-    <section id="about">
+    <section id="about" class="section-animate">
         <h2>About Me</h2>
-        <p>Hi! I'm Bradley Shirling.</p>
-        <p> I am a flexible and self-motivated Computer
-            Science graduate eager to leverage
-            existing technical skills and expand
-            knowledge alongside experienced
-            engineers. I am passionate about solving
-            challenging problems, delivering
-            outstanding user experiences, and
-            contributing innovative ideas in a
-            collaborative environment that
-            encourages professional growth.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Sort Visualizer</h3>
-            <p>A visual representation of sorting algorithms. Explore various sorting techniques like Bubble Sort, Merge Sort, and Quick Sort.</p>
-            <a href="sortVisualizer.html">View Project</a>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hi! I'm Bradley Shirling.</p>
+                <p> I am a flexible and self-motivated Computer
+                    Science graduate eager to leverage
+                    existing technical skills and expand
+                    knowledge alongside experienced
+                    engineers. I am passionate about solving
+                    challenging problems, delivering
+                    outstanding user experiences, and
+                    contributing innovative ideas in a
+                    collaborative environment that
+                    encourages professional growth.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/profile.jpeg" alt="Bradley Shirling" width="250px" height="200px" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
         </div>
-        <!-- Add more projects here -->
     </section>
 
-    <section id="skills">
+    <section id="projects" class="section-animate">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <div class="project-image">
+                    <img src="images/sort-visualizer.png" alt="Sort Visualizer">
+                </div>
+                <h3>Sorting Algorithm Visualizer</h3>
+                <p>Developed an interactive visualization platform that dynamically showcases a variety of sorting algorithms through animated transitions and synchronized auditory feedback. This tool simplifies complex algorithmic concepts and also deepens understanding through an immersive, multisensory experience.</p>
+                <div class="project-links">
+                    <a href="sortVisualizer.html" target="_blank" class="btn-primary">Live Demo</a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">
+                    <img src="images/dataStructure-visualizer.png" alt="Data Structure Visualizer">
+                </div>
+                <h3>Data Structure and Abstract Data Type Visualizer</h3>
+                <p>Developed an interactive visualization platform that dynamically showcases a variety of data structure and abstract data types through animated transitions. This tool simplifies complex algorithmic concepts and also deepens understanding through an immersive and sensory experience.</p>
+                <div class="project-links">
+                    <a href="dataStructureVisualizer.html" target="_blank" class="btn-primary">Live Demo</a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">
+                    <img src="images/project2.png" alt="Project 2">
+                </div>
+                <h3>Paw Print Chatbot</h3>
+                <p> Developed an interactive chatbot operating within a web application, providing rapid enrollment information and decreasing admissions inquiries. This project leverages multiple Python libraries to create an appealing and interactive experience with LLMs and NLP. It also utilizes Retrieval Augmented Generation to deliver engaging and pertinent responses in real-time.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/bradshirling/SeniorProject" target="_blank" class="btn-secondary">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-animate">
         <h2>Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>C++</li>
-            <li>HTML/CSS</li>
-            <li>Javascript</li>
-            <li>Flask</li>
-            <li>Git</li>
-        </ul>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <ul>
+                    <li class="skill-item" data-details="Proficient in Python for web development, data analysis, and automation">
+                        Python <span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Proficient in Python</p>
+                            <p>• Strong OOP and functional programming skills</p>
+                            <p>• Proficient in unit testing, debugging, and performance optimization</p>
+                        </div>
+                    </li>
+                    <li class="skill-item" data-details="Strong foundation in C++ for systems programming">
+                        C++ <span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Practiced in writing modular, reusable, and scalable C++ code</p>
+                            <p>• Data structures implementation</p>
+                            <p>• Familiar with file handling, networking, and OS-level programming</p>
+                        </div>
+                    </li>
+                    <li class="skill-item" data-details="Modern JavaScript for web applications">
+                        JavaScript <span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Confident in writing functions</p>
+                            <p>• Capable of DOM manipulation and modifying HTML elements</p>
+                            <p>• Versed in event handling with event listeners.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Web Technologies</h3>
+                <ul>
+                    <li class="skill-item" data-details="Modern web development">
+                        HTML/CSS<span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Full understanding of HTML structure and semantics</p>
+                            <p>• Knowledge of CSS Grid/Flexbox for responsive layouts</p>
+                            <p>• Can easily create forms and inputs quickly and efficiently</p>
+                        </div>
+                    </li>
+                    <li class="skill-item" data-details="Backend web framework">
+                        Flask <span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Experienced in creating basic flask applications</p>
+                            <p>• Experienced in defining URL routes</p>
+                            <p>• Familiar with logging and error handling tools</p>
+                        </div>
+                    </li>
+                    <li class="skill-item" data-details="Version control and collaboration">
+                        Git <span class="expand-icon">+</span>
+                        <div class="skill-details">
+                            <p>• Exposed to version control and branch management</p>
+                            <p>• Versed in remote repository management</p>
+                            <p>• Practiced in collaborative development</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section id="contact">
@@ -74,6 +167,7 @@
     <footer>
         <p>&copy; 2025 Bradley Shirling</p>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>
 

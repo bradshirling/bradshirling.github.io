@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Data Structures Visualizations</title>
+  <link rel="stylesheet" href="../css/dataStructureVisualizerStyle.css" />
+</head>
+<body>
+  <div class="theme-toggle">
+    <button id="themeToggle">🌙</button>
+  </div>
+  <h1>Interactive Data Structures Visualizations</h1>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="stackTab">Stack</button>
+    <button class="tab-button" data-tab="queueTab">Queue</button>
+    <button class="tab-button" data-tab="linkedListTab">Linked List</button>
+    <button class="tab-button" data-tab="binaryTreeTab">Binary Tree</button>
+  </div>
+  
+  <!-- Stack Tab -->
+  <div id="stackTab" class="tab-content active">
+    <h2>Stack (LIFO)</h2>
+    <p>A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle. Imagine stacking plates: you add a new plate on top and remove the top plate first.</p>
+    <div id="stack-container"></div>
+    <div class="controls">
+      <button id="pushStackBtn">Push Plate</button>
+      <button id="popStackBtn">Pop Plate</button>
+    </div>
+  </div>
+  
+  <!-- Queue Tab -->
+  <div id="queueTab" class="tab-content">
+    <h2>Queue (FIFO)</h2>
+    <p>A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle. Think of a line at a ticket counter: the first person in line is served first.</p>
+    <div id="queue-container"></div>
+    <div class="controls">
+      <button id="enqueueBtn">Enqueue</button>
+      <button id="dequeueBtn">Dequeue</button>
+    </div>
+  </div>
+  
+  <!-- Linked List Tab -->
+  <div id="linkedListTab" class="tab-content">
+    <h2>Linked List</h2>
+    <p>A linked list is a linear data structure where each element (node) points to the next, forming a chain. This allows efficient insertion and deletion from the list.</p>
+    <div id="linkedlist-container"></div>
+    <div class="controls">
+      <button id="addNodeBtn">Add Node</button>
+      <button id="removeNodeBtn">Remove Node</button>
+    </div>
+  </div>
+  
+  <!-- Binary Tree Tab -->
+  <div id="binaryTreeTab" class="tab-content">
+    <h2>Binary Tree (Complete Binary Tree)</h2>
+    <p>A binary tree is a hierarchical data structure where each node can have up to two children. This visualization uses an array to represent a complete binary tree. Parent-child relationships are shown by connecting lines.</p>
+    <div id="binarytree-container">
+      <svg id="binarytree-svg"></svg>
+    </div>
+    <div class="controls">
+      <button id="insertTreeNodeBtn">Insert Node</button>
+      <button id="removeTreeNodeBtn">Remove Node</button>
+    </div>
+  </div>
+  <script src="../js/dataStructureVisualizerScript.js"></script>
+</body>
+<footer>
+    <a href="index.html">Home</a>
+</footer>
+</html>

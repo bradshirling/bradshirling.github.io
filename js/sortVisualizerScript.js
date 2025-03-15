@@ -1,6 +1,7 @@
 const array = [];
 let audioCtx = null;
 let sorting = false;
+let originalArray = [];
 
 const sortAlgorithms = {
     bubbleSort,
@@ -13,17 +14,118 @@ const sortAlgorithms = {
     // Add more algorithms here as needed
 };
 
+const SPEED_SETTINGS = {
+    1: { label: 'Very Slow', ms: 2000 },
+    2: { label: 'Slow', ms: 1000 },
+    3: { label: 'Normal', ms: 500 },
+    4: { label: 'Fast', ms: 100 },
+    5: { label: 'Very Fast', ms: 20 }
+};
+
+const algorithmInfo = {
+    bubbleSort: {
+        name: "Bubble Sort",
+        timeComplexity: "O(n²)",
+        spaceComplexity: "O(1)",
+        description: "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order."
+    },
+    quickSort: {
+        name: "Quick Sort",
+        timeComplexity: "O(n log n)",
+        spaceComplexity: "O(log n)",
+        description: "A divide-and-conquer algorithm that picks a 'pivot' element and partitions the array around it."
+    },
+    heapSort: {
+        name: "Heap Sort",
+        timeComplexity: "O(n log n)",
+        spaceComplexity: "O(1)",
+        description: "Builds a heap from the data and repeatedly extracts the maximum element."
+    },
+    insertionSort: {
+        name: "Insertion Sort",
+        timeComplexity: "O(n²)",
+        spaceComplexity: "O(1)",
+        description: "Builds the final sorted array one item at a time by repeatedly inserting a new element into the sorted portion of the array."
+    },
+    selectionSort: {
+        name: "Selection Sort",
+        timeComplexity: "O(n²)",
+        spaceComplexity: "O(1)",
+        description: "Divides the input into a sorted and unsorted region, and repeatedly selects the smallest element from the unsorted region."
+    }
+};
+
+let isPaused = false;
+let stepMode = false;
+let comparisons = 0;
+let swaps = 0;
+let currentStep = 0;
+
 function getInputValues() {
     const n = parseInt(document.getElementById("numOfDigits").value);
-    const s = parseInt(document.getElementById("speed").value);
-
-    if (n < 2 || n > 100 || s < 20 || s > 2000) {
-        alert("Please enter valid inputs for digits (2-100) and speed (20-2000).");
-        return { n: 0, s: 0 };
-    }
+    const speedLevel = parseInt(document.getElementById("speed").value);
+    const s = SPEED_SETTINGS[speedLevel].ms;
     
     return { n, s };
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const digitsSlider = document.getElementById("numOfDigits");
+    const speedSlider = document.getElementById("speed");
+    const digitsValue = document.getElementById("digitsValue");
+    const speedValue = document.getElementById("speedValue");
+    const sortMethodSelect = document.getElementById("sortMethod");
+
+    // Initialize algorithm info
+    const initialAlgo = algorithmInfo[sortMethodSelect.value];
+    document.getElementById('currentAlgorithm').textContent = initialAlgo.name;
+    document.getElementById('timeComplexity').textContent = initialAlgo.timeComplexity;
+    document.getElementById('spaceComplexity').textContent = initialAlgo.spaceComplexity;
+    document.getElementById('algorithmDescription').textContent = initialAlgo.description;
+
+    // Initialize sliders
+    digitsValue.textContent = digitsSlider.value;
+    speedValue.textContent = SPEED_SETTINGS[speedSlider.value].label;
+
+    // Add event listeners
+    digitsSlider.addEventListener('input', () => {
+        digitsValue.textContent = digitsSlider.value;
+    });
+
+    speedSlider.addEventListener('input', () => {
+        speedValue.textContent = SPEED_SETTINGS[speedSlider.value].label;
+    });
+
+    sortMethodSelect.addEventListener('change', (e) => {
+        const algo = algorithmInfo[e.target.value];
+        document.getElementById('currentAlgorithm').textContent = algo.name;
+        document.getElementById('timeComplexity').textContent = algo.timeComplexity;
+        document.getElementById('spaceComplexity').textContent = algo.spaceComplexity;
+        document.getElementById('algorithmDescription').textContent = algo.description;
+    });
+
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.dataset.theme = savedTheme;
+    
+    // Initialize buttons state
+    document.getElementById('playBtn').disabled = true;
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('stepBtn').disabled = true;
+});
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', document.body.dataset.theme);
+});
+
+document.getElementById('sortMethod').addEventListener('change', (e) => {
+    const algo = algorithmInfo[e.target.value];
+    document.getElementById('currentAlgorithm').textContent = algo.name;
+    document.getElementById('timeComplexity').textContent = algo.timeComplexity;
+    document.getElementById('spaceComplexity').textContent = algo.spaceComplexity;
+    document.getElementById('algorithmDescription').textContent = algo.description;
+});
 
 function showBars(move) {
     container.innerHTML = "";
@@ -61,52 +163,152 @@ const playNote = (freq) => {
 };
 
 function init() {
-    if (sorting) sorting = false;
-
-    document.querySelector('button[onclick="play()"]').disabled = false;
-    const { n } = getInputValues();
-    if (n === 0) return;
-    array.length = 0;
-    container.innerHTML = "";
-
-    for (let i = 0; i < n; i++) {
-        array[i] = Math.random();
-    }
-
-    showBars();
-}
-
-function play() {
-    let { s } = getInputValues();
-    if (s === 0) return;
-
-    const sortMethod = document.getElementById("sortMethod").value;
-    const sortFunction = sortAlgorithms[sortMethod];
-
-    if (!sortFunction) {
-        alert("Invalid sorting algorithm selected");
+    if (sorting) {
+        sorting = false;
         return;
     }
 
-    document.querySelector('button[onclick="play()"]').disabled = true;
-    sorting = true;
+    const initBtn = document.getElementById('initBtn');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stepBtn = document.getElementById('stepBtn');
+    
+    try {
+        initBtn.classList.add('loading');
+        const { n } = getInputValues();
+        array.length = 0;
+        
+        for (let i = 0; i < n; i++) {
+            array[i] = Math.random();
+        }
 
-    const copy = [...array];
-    let moves = sortFunction(copy);
+        originalArray = [...array];
+        showBars();
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        stepBtn.disabled = true;
+        
+        // Reset state
+        isPaused = false;
+        stepMode = false;
+        comparisons = 0;
+        swaps = 0;
+        currentStep = 0;
+        updateStats({ type: 'reset' });
+        
+    } catch (error) {
+        console.error('Initialization error:', error);
+        alert('An error occurred during initialization');
+    } finally {
+        initBtn.classList.remove('loading');
+    }
+}
 
-    document.getElementById("form").reset();
-    animate(moves, s);
+function play() {
+    const playBtn = document.getElementById('playBtn');
+    const initBtn = document.getElementById('initBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stepBtn = document.getElementById('stepBtn');
+    
+    try {
+        const { s } = getInputValues();
+        const sortMethod = document.getElementById("sortMethod").value;
+        const sortFunction = sortAlgorithms[sortMethod];
+
+        if (!sortFunction) {
+            throw new Error('Invalid sorting algorithm selected');
+        }
+
+        playBtn.classList.add('loading');
+        playBtn.disabled = true;
+        initBtn.disabled = true;
+        pauseBtn.disabled = false;
+        stepBtn.disabled = false;
+        sorting = true;
+
+        const copy = [...array];
+        let moves = sortFunction(copy);
+        animate(moves, s);
+    } catch (error) {
+        console.error('Sorting error:', error);
+        alert('An error occurred during sorting');
+        sorting = false;
+    }
+}
+
+function updateStats(move) {
+    if (move.type === 'comp') comparisons++;
+    if (move.type === 'swap') swaps++;
+    currentStep++;
+    
+    document.getElementById('compCount').textContent = comparisons;
+    document.getElementById('swapCount').textContent = swaps;
+    document.getElementById('currentStep').textContent = currentStep;
+}
+
+function pause() {
+    isPaused = !isPaused;
+    document.getElementById('pauseBtn').textContent = isPaused ? 'Resume' : 'Pause';
+}
+
+function step() {
+    isPaused = true;
+    stepMode = true;
+    document.getElementById('pauseBtn').textContent = 'Resume';
+}
+
+function reset() {
+    if (sorting) {
+        sorting = false;
+    }
+    
+    array.length = 0;
+    array.push(...originalArray);
+    
+    isPaused = false;
+    stepMode = false;
+    comparisons = 0;
+    swaps = 0;
+    currentStep = 0;
+    
+    updateStats({ type: 'reset' });
+    showBars();
+    
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stepBtn = document.getElementById('stepBtn');
+    
+    playBtn.disabled = false;
+    pauseBtn.disabled = true;
+    stepBtn.disabled = false;
+    document.getElementById('pauseBtn').textContent = 'Pause';
 }
 
 function animate(moves, s) {
     if (!sorting || moves.length === 0) {
         showBars();
-        document.querySelector('button[onclick="play()"]').disabled = false;
+        const playBtn = document.getElementById('playBtn');
+        const initBtn = document.getElementById('initBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const stepBtn = document.getElementById('stepBtn');
+        
+        playBtn.classList.remove('loading');
+        playBtn.disabled = false;
+        initBtn.disabled = false;
+        pauseBtn.disabled = true;
+        stepBtn.disabled = true;
         sorting = false;
         return;
     }
 
+    if (isPaused && !stepMode) {
+        setTimeout(() => animate(moves, s), 100);
+        return;
+    }
+
+    stepMode = false;
     const move = moves.shift();
+    updateStats(move);
     const [i, j] = move.indices;
 
     if (move.type === "swap") {
@@ -176,22 +378,27 @@ function quickSort(array) {
     return moves;
 }
 
+// Add missing heapSort implementation
 function heapSort(array) {
     const moves = [];
 
     function heapify(arr, n, i) {
         let largest = i;
-        let left = 2 * i + 1;
-        let right = 2 * i + 2;
+        const left = 2 * i + 1;
+        const right = 2 * i + 2;
 
-        if (left < n && arr[left] > arr[largest]) {
+        if (left < n) {
             moves.push({ indices: [left, largest], type: "comp" });
-            largest = left;
+            if (arr[left] > arr[largest]) {
+                largest = left;
+            }
         }
 
-        if (right < n && arr[right] > arr[largest]) {
+        if (right < n) {
             moves.push({ indices: [right, largest], type: "comp" });
-            largest = right;
+            if (arr[right] > arr[largest]) {
+                largest = right;
+            }
         }
 
         if (largest !== i) {
@@ -201,20 +408,13 @@ function heapSort(array) {
         }
     }
 
-    function buildMaxHeap(arr) {
-        const n = arr.length;
-        for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-            heapify(arr, n, i);
-        }
+    for (let i = Math.floor(array.length / 2) - 1; i >= 0; i--) {
+        heapify(array, array.length, i);
     }
 
-    const n = array.length;
-    buildMaxHeap(array);
-
-    for (let i = n - 1; i > 0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
         moves.push({ indices: [0, i], type: "swap" });
         [array[0], array[i]] = [array[i], array[0]];
-
         heapify(array, i, 0);
     }
 
@@ -225,18 +425,13 @@ function insertionSort(array) {
     const moves = [];
 
     for (let i = 1; i < array.length; i++) {
-        let key = array[i];
-        let j = i - 1;
-
-        moves.push({ indices: [i, j], type: "comp" });
-
-        while (j >= 0 && array[j] > key) {
-            moves.push({ indices: [j, j + 1], type: "swap" });
-            array[j + 1] = array[j];
+        let j = i;
+        while (j > 0 && array[j - 1] > array[j]) {
+            moves.push({ indices: [j - 1, j], type: "comp" });
+            moves.push({ indices: [j - 1, j], type: "swap" });
+            [array[j - 1], array[j]] = [array[j], array[j - 1]];
             j--;
         }
-
-        array[j + 1] = key;
     }
 
     return moves;
@@ -245,17 +440,14 @@ function insertionSort(array) {
 function selectionSort(array) {
     const moves = [];
 
-    for (let i = 0; i < array.length - 1; i++) {
+    for (let i = 0; i < array.length; i++) {
         let minIndex = i;
-
         for (let j = i + 1; j < array.length; j++) {
             moves.push({ indices: [j, minIndex], type: "comp" });
-
             if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
         }
-
         if (minIndex !== i) {
             moves.push({ indices: [i, minIndex], type: "swap" });
             [array[i], array[minIndex]] = [array[minIndex], array[i]];

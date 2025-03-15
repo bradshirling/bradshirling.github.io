@@ -8,42 +8,59 @@
 </head>
 
 <body>
+    <div class="theme-toggle">
+        <button id="themeToggle">🌙</button>
+    </div>
+
     <h1>Sorting Visualizer</h1>
 
     <div id="container"></div>
 
-    <p>Welcome to the Sorting Visualizer! Enter your input and then press the initialize button to initialize your visual. After, press the play button to watch the sorting process!</p><br><br>
-
-    <p>The recommended values to input in order  to learn the sorting techniques is 5 for number of random digits and 2000ms for speed of sort</p><br><br>
-
-    <hr>
-
-    <div>
-        <div class="button-container">
-            <label for="sortMethod">Sorting Algorithm:</label><br><br>
-            <select id="sortMethod">
-                <option value="bubbleSort">Bubble Sort</option>
-                <option value="quickSort">Quick Sort</option>
-                <option value="heapSort">Heap Sort</option>
-                <option value="insertionSort">Insertion Sort</option>
-                <option value="selectionSort">Selection Sort</option>
-                
-            </select>
+    <div class="controls-panel">
+        <div class="algorithm-info-card">
+            <h3 id="currentAlgorithm">Bubble Sort</h3>
+            <div class="complexity-info">
+                <p>Time Complexity: <span id="timeComplexity">O(n²)</span></p>
+                <p>Space Complexity: <span id="spaceComplexity">O(1)</span></p>
+            </div>
+            <p id="algorithmDescription"></p>
         </div>
-        
-    <hr><br>
 
-        <form id="form">
-            <label for="numOfDigits">Number of random digits to be sorted 2-100:</label>
-            <input type="number" id="numOfDigits" min="2" max="100"><br><br>
-            
-            <label for="speed">Speed of sort 2000ms (slow) - 20ms (fast):</label>
-            <input type="number" id="speed" min="20" max="2000"><br><br>
-        </form>
+        <div class="visualization-controls">
+            <div class="button-container">
+                <label for="sortMethod">Select Algorithm:</label>
+                <select id="sortMethod">
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                    <option value="heapSort">Heap Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
+                </select>
+            </div>
 
-        <div class="button-container">
-            <button onclick="init()" onclick="getInputValues(event)">Initialize</button>
-            <button onclick="play()">Play</button><br><br>
+            <div class="slider-container">
+                <label for="numOfDigits">Number of elements: <span id="digitsValue">20</span></label>
+                <input type="range" id="numOfDigits" min="2" max="100" value="20" class="slider">
+            </div>
+
+            <div class="slider-container">
+                <label for="speed">Speed: <span id="speedValue">Normal</span></label>
+                <input type="range" id="speed" min="1" max="5" value="3" class="slider">
+            </div>
+
+            <div class="playback-controls">
+                <button onclick="init()" id="initBtn">Initialize</button>
+                <button onclick="play()" id="playBtn">Play</button>
+                <button onclick="pause()" id="pauseBtn">Pause</button>
+                <button onclick="step()" id="stepBtn">Step</button>
+                <button onclick="reset()" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="stats-panel">
+            <p>Comparisons: <span id="compCount">0</span></p>
+            <p>Swaps: <span id="swapCount">0</span></p>
+            <p>Current Step: <span id="currentStep">0</span></p>
         </div>
     </div>
 

@@ -1,18 +1,27 @@
+:root {
+    --primary-color: #1e2a38;
+    --accent-color: #ffb84d;
+    --text-color: #222;
+    --bg-color: #eef2f7;
+    --card-bg: #ffffff;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #eef2f7;
-    color: #222;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth
 }
 
 header {
-    background-color: #1e2a38;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: clamp(1rem, 2vw, 3rem);
@@ -28,7 +37,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffb84d;
+    color: var(--accent-color);
 }
 
 section {
@@ -41,13 +50,13 @@ section {
 }
 
 h2 {
-    color: #1e2a38;
+    color: var(--primary-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 .project {
-    background-color: #f2f2f2;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     margin-bottom: 1.5rem;
@@ -84,12 +93,12 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-    border-color: #1e2a38;
+    border-color: var(--primary-color);
     outline: none;
 }
 
 button {
-    background-color: #ffb84d;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -106,14 +115,14 @@ button:hover {
 }
 
 button:focus {
-    outline: 2px dashed #ffb84d;
+    outline: 2px dashed var(--accent-color);
     outline-offset: 3px;
 }
 
 footer {
     text-align: center;
     padding: clamp(1rem, 2vw, 3rem);
-    background-color: #1e2a38;
+    background-color: var(--primary-color);
     color: white;
     margin-top: 3rem;
     font-size: 0.9rem;
@@ -135,5 +144,160 @@ footer {
 
     button {
         width: 100%;
+    }
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(rgba(30, 42, 56, 0.9), rgba(30, 42, 56, 0.9)), url('../images/hero-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+    animation: fadeInUp 1s ease;
+}
+
+.social-links {
+    margin-top: 2rem;
+}
+
+.social-links a {
+    font-size: 1.8rem;
+    margin: 0 1rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+social-links a:hover {
+    transform: translateY(-5px);
+}
+
+.section-animate {
+    opacity: 1; /* Changed from 0 to make sections visible by default */
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.project-image {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.skill-item {
+    position: relative;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.skill-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-item.active .expand-icon {
+    transform: rotate(45deg);
+}
+
+.skill-details {
+    display: none;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.skill-item.active .skill-details {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
