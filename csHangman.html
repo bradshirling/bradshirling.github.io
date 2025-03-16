@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#333333">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Hangman: Computer Science Edition</title>
+  <link rel="stylesheet" href="css/csHangmanStyle.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <button class="difficulty-toggle" id="difficultyToggle">Mode: Normal</button>
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+  <div class="container">
+    <h1>Hangman: CS Edition</h1>
+    <p class="subtitle">Test your Computer Science knowledge!</p>
+    
+    <div class="game-container">
+      <svg class="hangman-svg" viewBox="0 0 100 100" id="hangmanDrawing">
+        <!-- Base -->
+        <line x1="10" y1="90" x2="90" y2="90" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Vertical pole -->
+        <line x1="30" y1="90" x2="30" y2="10" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Horizontal pole -->
+        <line x1="30" y1="10" x2="70" y2="10" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Rope -->
+        <line x1="70" y1="10" x2="70" y2="20" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Head -->
+        <circle cx="70" cy="30" r="10" fill="none" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Body -->
+        <line x1="70" y1="40" x2="70" y2="60" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Left arm -->
+        <line x1="70" y1="45" x2="60" y2="55" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Right arm -->
+        <line x1="70" y1="45" x2="80" y2="55" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Left leg -->
+        <line x1="70" y1="60" x2="60" y2="75" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Right leg -->
+        <line x1="70" y1="60" x2="80" y2="75" stroke="#2c3e50" stroke-width="2" class="hangman-part"/>
+        <!-- Additional parts for easy mode -->
+        <line x1="20" y1="90" x2="20" y2="85" stroke="#2c3e50" stroke-width="2" class="hangman-part easy-part"/>
+        <line x1="40" y1="90" x2="40" y2="85" stroke="#2c3e50" stroke-width="2" class="hangman-part easy-part"/>
+        <line x1="80" y1="90" x2="80" y2="85" stroke="#2c3e50" stroke-width="2" class="hangman-part easy-part"/>
+        <line x1="30" y1="70" x2="35" y2="70" stroke="#2c3e50" stroke-width="2" class="hangman-part easy-part"/>
+      </svg>
+      
+      <div class="game-content">
+        <div class="word-display" id="wordDisplay"></div>
+        <div class="game-info">
+          <span>Attempts left: <span id="attempts">6</span></span>
+          <span class="score">Score: <span id="score">0</span></span>
+        </div>
+        <div class="guessed-letters" id="guessedLetters">Guessed letters: </div>
+        <div class="keyboard" id="keyboard"></div>
+        <div class="message" id="message"></div>
+        <button class="key" id="restartButton">New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/csHangmanScript.js"></script>
+  <footer>
+    <a href="index.html">Home</a>
+  </footer>
+</body>
+</html>
