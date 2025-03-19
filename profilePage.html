@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/profilePageStyle.css">
+</head>
+<body>
+    <header>
+        <img src="../images/default-profile.png" alt="Logo" class="logo">
+        <h1>helloWorld Profile</h1>
+        <nav>
+            <a href="socialBlog.html">helloWorld Home</a>
+        </nav>
+        <div class="mode-toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+    <div id="create-profile-section" class="container">
+        <h2>Create Profile</h2>
+        <img id="profile-picture" class="profile-picture" src="../images/default-profile.png" alt="Profile Picture">
+        <input type="file" id="profile-picture-input" class="file-input" accept="image/*" onchange="loadProfilePicture(event)">
+        <button type="button" class="file-button" onclick="document.getElementById('profile-picture-input').click();">Change Profile Picture</button>
+        <input id="profile-name" class="input input-title" placeholder="Enter your name">
+        <textarea id="profile-bio" class="input" placeholder="Enter your bio"></textarea>
+        <div class="button-container">
+            <button onclick="saveProfile()">Save Profile</button>
+        </div>
+    </div>
+    <div id="profile-information-section" class="container hidden">
+        <h2>Profile Information</h2>
+        <img id="profile-picture-display" class="profile-picture" src="../images/default-profile.png" alt="Profile Picture">
+        <button type="button" id="edit-profile-picture-button" class="edit-file-button" onclick="document.getElementById('profile-picture-input').click();">Change Profile Picture</button>
+        <p id="profile-name-display" class="profile-info">Name: <span id="profile-name-text"></span><button class="edit-button" onclick="editProfile('name')">Edit</button></p>
+        <p id="profile-bio-display" class="profile-info">Bio: <span id="profile-bio-text"></span><button class="edit-button" onclick="editProfile('bio')">Edit</button></p>
+        <button id="edit-profile-button" class="edit-profile-button" onclick="enableEditing()">Edit Profile</button>
+        <button id="save-changes-button" class="save-changes-button" onclick="saveChanges()">Save Changes</button>
+    </div>
+    <footer>
+        <p>&copy; 2025 helloWorld. All rights reserved.</p>
+    </footer>
+    <script src="../js/profilePageScript.js"></script>
+</body>
+</html>

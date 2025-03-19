@@ -264,6 +264,11 @@ button:disabled {
     font-size: 24px;
     margin: 0 10px;
     flex-shrink: 0;
+    color: #333 !important;  /* Force black color even in dark mode */
+}
+
+.null {
+    color: #333 !important;  /* Force black color even in dark mode */
 }
 
 /* BINARY TREE Styles */
@@ -402,6 +407,22 @@ footer {
         grid-template-columns: 1fr;
         gap: 15px;
     }
+
+    .theme-toggle {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .theme-toggle button {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
 }
 
 @media (max-width: 480px) {
@@ -415,14 +436,17 @@ footer {
     }
 
     .tabs {
-        gap: 3px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5px;
+        padding: 0 5px;
+        width: 100%;
     }
 
     .tab-button {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-        flex: 1 1 auto;
-        min-width: 70px;
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
         margin: 0;
     }
 
@@ -446,13 +470,15 @@ footer {
 
     .controls {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 5px;
         padding: 0 10px;
+        justify-content: center;
     }
 
     .controls button {
-        width: 100%;
+        width: calc(50% - 5px);
         margin: 0;
         padding: 10px;
     }

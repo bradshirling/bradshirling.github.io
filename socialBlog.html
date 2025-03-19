@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>helloWorld</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/socialBlogStyle.css">
+</head>
+<body>
+    <header>
+        <img src="../images/default-profile.png" alt="Logo" class="logo">
+        <h1>helloWorld</h1>
+        <nav>
+            <a href="index.html">Portfolio Home</a>
+            <a href="profilePage.html">Manage Profile</a>
+        </nav>
+        <div class="mode-toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="main-content">
+        <div class="content">
+            <div class="container">
+                <h2>Push A New Post</h2>
+                <input id="new-post-title" class="input input-title" placeholder="Enter post title">
+                <textarea id="new-post-content" class="input" placeholder="Enter post content"></textarea>
+                <button onclick="createNewPost()">Push Post</button>
+            </div>
+            <div id="posts-container" class="container last-container">
+                <h2>Pushed Posts</h2>
+                <p id="empty-feed-message">Empty Repository. (No posts pushed yet. Be the first one!)</p>
+            </div>
+        </div>
+        <div class="sidebar-container">
+            <div class="sidebar">
+                <h2>Find Me</h2>
+                <div class="post">
+                    <h3>GitHub</h3>
+                    <p class="post-content">Find my projects and their source code here!</p>
+                    <a href="https://github.com/bradshirling" target="_blank">GitHub</a>
+                </div>
+                <div class="post">
+                    <h3>LinkedIn</h3>
+                    <p class="post-content">Find out more about me!</p>
+                    <a href="https://www.linkedin.com/in/bradley-shirling/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="sidebar">
+                <h2>Contact Me</h2>
+                <div class="post">
+                    <h3>Email</h3>
+                    <p class="post-content">Let me know if you have any inquiries or questions!</p>
+                    <a href="mailto:bradleyshirling@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 helloWorld. All rights reserved.</p>
+    </footer>
+    <script src="../js/socialBlogScript.js"></script>
+</body>
+</html>
