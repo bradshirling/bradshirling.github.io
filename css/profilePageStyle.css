@@ -1,4 +1,3 @@
-
 :root {
     --background-color-dark: #1e1e1e;
     --text-color-dark: #d4d4d4;
@@ -31,6 +30,7 @@ header {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 }
 header img.logo {
     height: 50px;
@@ -209,6 +209,7 @@ footer {
     margin-left: auto;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 .switch {
     position: relative;
@@ -251,4 +252,35 @@ input:checked + .slider {
 }
 input:checked + .slider:before {
     transform: translateX(26px);
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+    header h1 {
+        text-align: center;
+        width: 100%;
+    }
+    header nav {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    header nav a {
+        margin: 5px 10px;
+    }
+    .mode-toggle-container {
+        margin: 10px 0;
+        width: 100%;
+        justify-content: right;
+    }
+    header nav {
+        text-align: center;
+        margin-top: 10px;
+    }
 }
