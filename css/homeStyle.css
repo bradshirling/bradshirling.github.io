@@ -265,7 +265,7 @@ social-links a:hover {
 }
 
 .skill-item.active .expand-icon {
-    transform: rotate(45deg);
+    display: none;
 }
 
 .skill-details {
@@ -273,6 +273,10 @@ social-links a:hover {
     padding: 1rem 0;
     font-size: 0.9rem;
     color: #666;
+}
+
+.skill-details p {
+    margin: 20px;
 }
 
 .skill-item.active .skill-details {
