@@ -104,11 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('algorithmDescription').textContent = algo.description;
     });
 
-    // Initialize theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.dataset.theme = savedTheme;
     
-    // Initialize buttons state
     document.getElementById('playBtn').disabled = true;
     document.getElementById('pauseBtn').disabled = true;
     document.getElementById('stepBtn').disabled = true;
@@ -188,7 +186,6 @@ function init() {
         pauseBtn.disabled = true;
         stepBtn.disabled = true;
         
-        // Reset state
         isPaused = false;
         stepMode = false;
         comparisons = 0;
@@ -378,7 +375,6 @@ function quickSort(array) {
     return moves;
 }
 
-// Add missing heapSort implementation
 function heapSort(array) {
     const moves = [];
 

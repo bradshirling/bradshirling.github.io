@@ -21,7 +21,6 @@
     --hangman-secondary: #ff4081;
 }
 
-/* Theme toggle and difficulty toggle styles */
 .theme-toggle, .difficulty-toggle {
     color: white;
     background-color: var(--button-color);
@@ -57,7 +56,6 @@
     transform: translateY(0);
 }
 
-/* Main styles */
 body {
     display: flex;
     flex-direction: column;

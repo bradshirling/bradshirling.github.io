@@ -1,5 +1,4 @@
 
-// Add this at the beginning of the script section
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('themeToggle');
   const savedTheme = localStorage.getItem('theme') || 'light';
@@ -12,9 +11,6 @@ document.getElementById('themeToggle').addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'light' : 'dark');
 });
 
-/* ------------------------------
-   Tab Switching Logic
------------------------------- */
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
 tabButtons.forEach(button => {
@@ -27,9 +23,6 @@ tabButtons.forEach(button => {
   });
 });
 
-/* ------------------------------
-   STACK Implementation
------------------------------- */
 const stackContainer = document.getElementById('stack-container');
 const pushStackBtn = document.getElementById('pushStackBtn');
 const popStackBtn = document.getElementById('popStackBtn');
@@ -60,9 +53,6 @@ popStackBtn.addEventListener('click', () => {
   }
 });
 
-/* ------------------------------
-   QUEUE Implementation
------------------------------- */
 const queueContainer = document.getElementById('queue-container');
 const enqueueBtn = document.getElementById('enqueueBtn');
 const dequeueBtn = document.getElementById('dequeueBtn');
@@ -93,9 +83,6 @@ dequeueBtn.addEventListener('click', () => {
   }
 });
 
-/* ------------------------------
-   LINKED LIST Implementation
------------------------------- */
 const linkedListContainer = document.getElementById('linkedlist-container');
 const addNodeBtn = document.getElementById('addNodeBtn');
 const removeNodeBtn = document.getElementById('removeNodeBtn');
@@ -144,10 +131,6 @@ removeNodeBtn.addEventListener('click', () => {
   }
 });
 
-/* ------------------------------
-   BINARY TREE Implementation
-   (Complete Binary Tree using an array)
------------------------------- */
 const binaryTreeContainer = document.getElementById('binarytree-container');
 const binaryTreeSvg = document.getElementById('binarytree-svg');
 const insertTreeNodeBtn = document.getElementById('insertTreeNodeBtn');
@@ -155,7 +138,6 @@ const removeTreeNodeBtn = document.getElementById('removeTreeNodeBtn');
 const binaryTree = [];
 
 function updateBinaryTreeVisual() {
-  // Clear container and reset SVG
   while(binaryTreeContainer.firstChild) {
     binaryTreeContainer.removeChild(binaryTreeContainer.firstChild);
   }
@@ -185,7 +167,6 @@ function updateBinaryTreeVisual() {
     binaryTreeContainer.appendChild(nodeDiv);
   });
   
-  // Draw connecting lines from each node to its parent
   binaryTree.forEach((value, index) => {
     if(index > 0) {
       const parentIndex = Math.floor((index - 1) / 2);
@@ -217,7 +198,6 @@ removeTreeNodeBtn.addEventListener('click', () => {
   }
 });
 
-// Initialize all visualizations
 updateStackVisual();
 updateQueueVisual();
 updateLinkedListVisual();

@@ -1,4 +1,3 @@
-// Add this before the existing JavaScript code
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -101,23 +100,19 @@ function init() {
     maxIncorrectGuesses = isEasyMode ? MAX_ATTEMPTS.easy : MAX_ATTEMPTS.normal;
     guessedLetters = new Set();
 
-    // Reset all hangman parts
     document.querySelectorAll('.hangman-part').forEach(part => part.style.opacity = '0');
     
-    // In normal mode, show base, pole and rope at start
     if (!isEasyMode) {
     const baseParts = document.querySelectorAll('.hangman-part:not(.easy-part)');
-    for (let i = 0; i < 4; i++) {  // Changed from 3 to 4 to include base
+    for (let i = 0; i < 4; i++) {
         baseParts[i].style.opacity = '1';
     }
     }
     
-    // Show/hide easy mode parts
     document.querySelectorAll('.easy-part').forEach(part => {
     part.style.display = isEasyMode ? 'block' : 'none';
     });
     
-    // Enable all keyboard buttons
     const keys = document.getElementsByClassName('key');
     Array.from(keys).forEach(key => {
     if (key.id !== 'restartButton') {
@@ -171,7 +166,6 @@ function processGuess(letter) {
     
     if (isEasyMode) {
         if (attemptsUsed === 1) {
-        // Show base first in easy mode
         standardParts[0].style.opacity = '1';
         } else if (attemptsUsed <= standardParts.length) {
         standardParts[attemptsUsed - 1].style.opacity = '1';
@@ -179,8 +173,7 @@ function processGuess(letter) {
         easyParts[attemptsUsed - standardParts.length - 1].style.opacity = '1';
         }
     } else {
-        // In normal mode, show parts sequentially starting after base, pole and rope
-        if (attemptsUsed + 4 <= standardParts.length) {  // Changed from 3 to 4
+        if (attemptsUsed + 4 <= standardParts.length) {
         standardParts[attemptsUsed + 3].style.opacity = '1';
         }
     }
@@ -210,7 +203,6 @@ function endGame() {
     });
 }
 
-// Add this to the DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
