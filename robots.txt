@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bradleyshirling.io/sitemap.xml
+Sitemap: https://bradshirling.github.io/sitemap.xml
