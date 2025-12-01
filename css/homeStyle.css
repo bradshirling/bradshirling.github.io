@@ -621,7 +621,7 @@ footer {
     transform: translateY(0);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .nav {
         position: sticky;
     }
@@ -640,6 +640,13 @@ footer {
 
     .hero__text {
         text-align: left;
+    }
+
+    /* On smaller devices the reveal animation can leave content hidden if JS doesn't run
+       or intersection thresholds aren't met. Ensure sections are visible by default. */
+    .section-animate {
+        opacity: 1;
+        transform: none;
     }
 }
 

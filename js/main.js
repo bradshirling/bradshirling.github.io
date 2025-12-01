@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
+    // Only use IntersectionObserver when it's supported. On older browsers / non-supporting
+    // environments (some mobile browsers or restricted contexts) we fall back to revealing
+    // sections immediately so content isn't left hidden.
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
 
-    document.querySelectorAll('.section-animate').forEach(section => observer.observe(section));
+        document.querySelectorAll('.section-animate').forEach(section => observer.observe(section));
+    } else {
+        // graceful fallback: show everything immediately
+        document.querySelectorAll('.section-animate').forEach(section => section.classList.add('visible'));
+    }
 
     const nav = document.querySelector('.nav');
     const toggleNavState = () => {
