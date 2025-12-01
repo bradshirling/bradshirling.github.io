@@ -15,233 +15,329 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="images/site.webmanifest" />
     <title>Bradley Shirling | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/homeStyle.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Bradley Shirling</h1>
-            <p class="title">Software Developer</p>
-            <div class="social-links">
-                <a href="https://github.com/bradshirling" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/bradley-shirling/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-        <nav>
+    <header class="nav">
+        <div class="nav__brand">Bradley Shirling</div>
+        <div class="nav__links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
-        </nav>
+        </div>
+        <a class="nav__cta" href="mailto:bradleyshirling@gmail.com">Let's talk</a>
     </header>
 
-    <section id="about" class="section-animate">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Hi! I'm Bradley Shirling.</p>
-                <p> I am a flexible and self-motivated software developer eager to leverage
-                    existing technical skills and expand
-                    knowledge alongside experienced
-                    developers. I am passionate about solving
-                    challenging problems, delivering
-                    outstanding user experiences, and
-                    contributing innovative ideas in a
-                    collaborative environment that
-                    encourages professional growth.</p>
+    <main>
+        <section class="hero section-animate" id="top">
+            <div class="hero__grid">
+                <div class="hero__text">
+                    <p class="eyebrow">Software Developer · Full-stack leaner · Builder</p>
+                    <h1>Hi, I'm <span>Bradley Shirling</span></h1>
+                    <p class="lede">I design and build performant software systems, pairing thoughtful design with solid engineering. I value clarity, fast feedback loops, and projects that make complex ideas feel simple.</p>
+                    <div class="hero__actions">
+                        <a href="#projects" class="btn btn-primary">View projects</a>
+                        <a href="mailto:bradleyshirling@gmail.com?subject=Resume%20request" class="btn btn-ghost">Request resume</a>
+                    </div>
+                    <div class="hero__social">
+                        <a href="https://github.com/bradshirling" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bradley-shirling/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <span class="status-chip"><span class="dot"></span>Available for freelance</span>
+                    </div>
+                </div>
+                <div class="hero__card">
+                    <img src="images/profile.jpeg" alt="Portrait of Bradley Shirling">
+                    <div class="hero__meta">
+                        <div>
+                            <p class="meta-label">Location</p>
+                            <p class="meta-value">US (CST)</p>
+                        </div>
+                        <div>
+                            <p class="meta-label">Focus</p>
+                            <p class="meta-value">Software Development</p>
+                        </div>
+                        <div>
+                            <p class="meta-label">Experience</p>
+                            <p class="meta-value">3+ yrs</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="about-image">
-                <img src="images/profile.jpeg" alt="Bradley Shirling" width="250px" height="200px" style="display: block; margin-left: auto; margin-right: auto;">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="section-animate">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/project2.png" alt="Paw Print Chatbot">
+        <section id="about" class="section-animate">
+            <div class="section-header">
+                <p class="eyebrow">About</p>
+                <h2>Building thoughtful products with intent</h2>
+                <p class="lede">I’m a flexible, self-motivated developer who loves pairing clean UX with robust engineering. I thrive in collaborative teams, prototyping quickly, and shipping polished, reliable experiences.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>How I work</h3>
+                    <p>I obsess over clarity and speed—rapid iterations, strong feedback loops, and shipping small, meaningful improvements. I write maintainable code, document decisions, and measure impact.</p>
                 </div>
-                <h3>Paw Print Chatbot</h3>
-                <p> Developed an interactive chatbot operating within a web application, providing rapid enrollment information and decreasing admissions inquiries. This project leverages multiple Python libraries to create an appealing and interactive experience with LLMs and NLP. It also utilizes Retrieval Augmented Generation to deliver engaging and pertinent responses in real-time.
-                </p>
-                <div class="project-links">
-                    <a href="https://github.com/bradshirling/SeniorProject" target="_blank" class="btn-secondary">Source Code</a>
+                <div class="about-card">
+                    <h3>What I enjoy</h3>
+                    <p>Building interfaces that feel effortless, creating visualizations that make hard concepts click, and exploring how AI can augment everyday tools and workflows.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Values</h3>
+                    <p>Empathy for users, tight collaboration with designers/PMs, and a bias for shipping. I believe great products are intentional, accessible, and enjoyable.</p>
                 </div>
             </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/ReactProjectScreenshot.png" alt="Movie Browser React App">
-                </div>
-                <h3>Movie Browser React App</h3>
-                <p>Developed a sleek, responsive movie browsing website using React, allowing users to explore popular films and save favorites to a dedicated Favorites page. The project showcases key React features including reusable components, conditional rendering, state management, routing, useEffect, and context. Integrated external APIs to dynamically fetch and display movie data within the React framework</p>
-                <div class="project-links">
-                    <a href="https://github.com/bradshirling/ReactMovieBrowser" target="_blank" class="btn-secondary">Source Code</a>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/showerthoughts.png" alt="Shower Thoughts Tweet Generator">
-                </div>
-                <h3>Shower Thoughts</h3>
-                <p>Developed a lighthearted web app that transforms quirky user-submitted shower thoughts into polished, viral-ready tweets using the OpenAI API. Integrated the Twitter API to enable seamless posting and real-time sharing. Focused on creative prompt engineering, clean UI, and engaging user interaction to encourage spontaneity and social media engagement.</p>
-                <div class="project-links">
-                    <a href="https://github.com/bradshirling/ShowerThoughts" target="_blank" class="btn-secondary">Source Code</a>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/socialBlog.png" alt="Blog/Social Media Platform">
-                </div>
-                <h3>helloWorld Blog/Social Media Platform</h3>
-                <p>Developed a lightweight blog/social media platform using HTML, JavaScript, and CSS to create a responsive and user-friendly experience. Implemented core features including post creation, a content feed, user profile management, and commenting. Focused on clean code and intuitive UI/UX to enhance usability and engagement.</p>
-                <div class="project-links">
-                    <a href="socialBlog.html" class="btn-primary">Live Demo</a>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/sort-visualizer.png" alt="Sort Visualizer">
-                </div>
-                <h3>Sorting Algorithm Visualizer</h3>
-                <p>Developed an interactive visualization platform that dynamically showcases a variety of sorting algorithms through animated transitions and synchronized auditory feedback. This tool simplifies complex algorithmic concepts and also deepens understanding through an immersive, multisensory experience.</p>
-                <div class="project-links">
-                    <a href="sortVisualizer.html" class="btn-primary">Live Demo</a>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/dataStructure-visualizer.png" alt="Data Structure Visualizer">
-                </div>
-                <h3>Data Structure and Abstract Data Type Visualizer</h3>
-                <p>Developed an interactive visualization platform that dynamically showcases a variety of data structures and abstract data types through animated transitions. This tool simplifies complex algorithmic concepts and also deepens understanding through an immersive and sensory experience.</p>
-                <div class="project-links">
-                    <a href="dataStructureVisualizer.html" class="btn-primary">Live Demo</a>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-image">
-                    <img src="images/csHangman.png" alt="Computer Science Hangman">
-                </div>
-                <h3>Computer Science Hangman</h3>
-                <p>Developed an interactive web-based hangman game designed to enhance computer science vocabulary retention. Implemented a dynamic word bank featuring several computer science terms for an engaging user experience. Integrated real-time feedback and scoring mechanisms to reinforce learning.</p>
-                <div class="project-links">
-                    <a href="csHangman.html" class="btn-primary">Live Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" class="section-animate">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages</h3>
-                <ul>
-                    <li class="skill-item" data-details="Proficient in Python for web development, data analysis, and automation">
-                        Python <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Proficient in Python</p>
-                            <p>• Strong OOP and functional programming skills</p>
-                            <p>• Proficient in unit testing, debugging, and performance optimization</p>
-                        </div>
-                    </li>
-                    <li class="skill-item" data-details="Strong foundation in C++ for systems programming">
-                        C++ <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Practiced in writing modular, reusable, and scalable C++ code</p>
-                            <p>• Data structures implementation</p>
-                            <p>• Familiar with file handling, networking, and OS-level programming</p>
-                        </div>
-                    </li>
-                    <li class="skill-item" data-details="Modern JavaScript for web applications">
-                        JavaScript <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Confident in writing functions</p>
-                            <p>• Capable of DOM manipulation and modifying HTML elements</p>
-                            <p>• Versed in event handling with event listeners.</p>
-                        </div>
-                    </li>
-                </ul>
+        <section id="projects" class="section-animate">
+            <div class="section-header">
+                <p class="eyebrow">Projects</p>
+                <h2>Selected work</h2>
+                <p class="lede">A mix of shipped experiments, visual tools, and production-ready builds.</p>
             </div>
-            <div class="skill-category">
-                <h3>Web Technologies</h3>
-                <ul>
-                    <li class="skill-item" data-details="Modern web development">
-                        HTML/CSS<span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Full understanding of HTML structure and semantics</p>
-                            <p>• Knowledge of CSS Grid/Flexbox for responsive layouts</p>
-                            <p>• Can easily create forms and inputs quickly and efficiently</p>
+            <div class="projects-grid">
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/project2.png" alt="Paw Print chatbot UI">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>AI Assistant</span>
+                            <span>Python · RAG</span>
+                            <span>2024</span>
                         </div>
-                    </li>
-                    <li class="skill-item" data-details="React Development">
-                        React <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Understands how to build and manage reusable components</p>
-                            <p>• Versed state management to ensure predictable data flow</p>
-                            <p>• Practiced in integrating APIs with proper loading and error states</p>
+                        <h3>Paw Print Chatbot</h3>
+                        <p>Interactive admissions assistant delivering enrollment answers with LLM + RAG, tuned prompts, and NLP-powered retrieval for accurate, fast responses.</p>
+                        <div class="project-tags">
+                            <span>Flask</span><span>Ollama</span><span>Vector search</span>
                         </div>
-                    </li>
-                    <li class="skill-item" data-details="Backend web framework">
-                        Flask <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Experienced in creating basic flask applications</p>
-                            <p>• Experienced in defining URL routes</p>
-                            <p>• Familiar with logging and error handling tools</p>
+                        <div class="project-links">
+                            <a href="https://github.com/bradshirling/SeniorProject" target="_blank" class="btn btn-ghost">Source</a>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/ReactProjectScreenshot.png" alt="Movie browser React app">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Front-end</span>
+                            <span>React</span>
+                            <span>2023</span>
+                        </div>
+                        <h3>Movie Browser</h3>
+                        <p>Sleek movie explorer with saved favorites, reusable components, routing, and API integration for real-time data.</p>
+                        <div class="project-tags">
+                            <span>React</span><span>API</span><span>State</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bradshirling/ReactMovieBrowser" target="_blank" class="btn btn-ghost">Source</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/showerthoughts.png" alt="Shower Thoughts app">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Creative</span>
+                            <span>OpenAI</span>
+                            <span>2023</span>
+                        </div>
+                        <h3>Shower Thoughts</h3>
+                        <p>Turns quirky ideas into polished, ready-to-post tweets with OpenAI prompt engineering and Twitter API publishing.</p>
+                        <div class="project-tags">
+                            <span>OpenAI</span><span>Twitter API</span><span>UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bradshirling/ShowerThoughts" target="_blank" class="btn btn-ghost">Source</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/socialBlog.png" alt="helloWorld blog preview">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Product</span>
+                            <span>Front-end</span>
+                            <span>2022</span>
+                        </div>
+                        <h3>helloWorld Social</h3>
+                        <p>Lightweight blog/social platform with posting, feeds, profiles, and comments—focused on clean UI and responsive layouts.</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span><span>JavaScript</span><span>UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="socialBlog.html" class="btn btn-primary">Live demo</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/sort-visualizer.png" alt="Sorting visualizer">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Visualization</span>
+                            <span>Algorithms</span>
+                            <span>2022</span>
+                        </div>
+                        <h3>Sorting Visualizer</h3>
+                        <p>Interactive sorting explorer with animated transitions and audio cues to make algorithm behavior intuitive.</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span><span>JavaScript</span><span>UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="sortVisualizer.html" class="btn btn-primary">Live demo</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/dataStructure-visualizer.png" alt="Data structure visualizer">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Visualization</span>
+                            <span>Education</span>
+                            <span>2021</span>
+                        </div>
+                        <h3>Data Structure Visualizer</h3>
+                        <p>Dynamic visualizations of core data structures and ADTs to make complex concepts tangible.</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span><span>JavaScript</span><span>UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="dataStructureVisualizer.html" class="btn btn-primary">Live demo</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-image">
+                        <img src="images/csHangman.png" alt="Computer Science Hangman">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>Game</span>
+                            <span>Education</span>
+                            <span>2021</span>
+                        </div>
+                        <h3>CS Hangman</h3>
+                        <p>Web-based hangman game with a CS vocabulary bank, real-time feedback, and scoring to reinforce learning.</p>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="csHangman.html" class="btn btn-primary">Live demo</a>
+                        </div>
+                    </div>
+                </article>
             </div>
-            <div class="skill-category">
-                <h3>Other Skills</h3>
-                <ul>
-                    <li class="skill-item" data-details="Version control and collaboration">
-                        Git/Github <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Exposed to version control and branch management</p>
-                            <p>• Versed in remote repository management</p>
-                            <p>• Practiced in collaborative development</p>
-                        </div>
-                    </li>
-                    <li class="skill-item" data-details="Basic Linux Knowledge">
-                        Linux Basics <span class="expand-icon">+</span>
-                        <div class="skill-details">
-                            <p>• Familiar with basic command line navigation</p>
-                            <p>• Experienced in file and permission management</p>
-                            <p>• Comfortable with package management</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="https://formspree.io/f/xeoqqlyw" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Send</button>
-        </form>
-    </section>
+        <section id="skills" class="section-animate">
+            <div class="section-header">
+                <p class="eyebrow">Skills</p>
+                <h2>Tools I lean on</h2>
+                <p class="lede">From front-end craft to backend glue and AI-driven workflows.</p>
+            </div>
+            <div class="skills-grid">
+                <button class="skill-chip" data-skill="languages">Languages</button>
+                <button class="skill-chip" data-skill="web">Web Tech</button>
+                <button class="skill-chip" data-skill="frameworks">Frameworks</button>
+                <button class="skill-chip" data-skill="ops">Ops & Collab</button>
+            </div>
+            <div class="skill-panels">
+                <div class="skill-panel active" id="languages">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li><span>Python</span> — automation, APIs, data processing</li>
+                        <li><span>JavaScript</span> — modern ES, DOM work, animations</li>
+                        <li><span>C++</span> — systems fundamentals and data structures</li>
+                    </ul>
+                </div>
+                <div class="skill-panel" id="web">
+                    <h3>Web Technologies</h3>
+                    <ul>
+                        <li><span>HTML/CSS</span> — semantic structure, flex/grid, accessibility-first</li>
+                        <li><span>Responsive</span> — fluid layouts, mobile-first, performance</li>
+                        <li><span>APIs</span> — REST integration, loading/error states, caching</li>
+                    </ul>
+                </div>
+                <div class="skill-panel" id="frameworks">
+                    <h3>Frameworks</h3>
+                    <ul>
+                        <li><span>React</span> — reusable components, hooks, routing</li>
+                        <li><span>Flask</span> — lightweight services, templating, routing</li>
+                        <li><span>OpenAI</span> — prompt design, RAG patterns</li>
+                    </ul>
+                </div>
+                <div class="skill-panel" id="ops">
+                    <h3>Ops & Collaboration</h3>
+                    <ul>
+                        <li><span>Git/GitHub</span> — branching, PR reviews, release hygiene</li>
+                        <li><span>Linux</span> — CLI workflows, permissions, tooling</li>
+                        <li><span>Docs & Specs</span> — decision logs, clear communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-animate">
+            <div class="section-header">
+                <p class="eyebrow">Contact</p>
+                <h2>Let’s build something</h2>
+                <p class="lede">Tell me about your project, your team, or a problem you’re solving.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <p class="meta-label">Based in</p>
+                            <p class="meta-value">United States (CST)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <p class="meta-label">Email</p>
+                            <p class="meta-value"><a href="mailto:bradleyshirling@gmail.com">bradleyshirling@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://github.com/bradshirling" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bradley-shirling/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form action="https://formspree.io/f/xeoqqlyw" method="POST" class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="_replyto" required placeholder="you@example.com">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="What would you like to collaborate on?"></textarea>
+
+                    <button type="submit">Send message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Bradley Shirling</p>
+        <p>&copy; 2025 Bradley Shirling · Built with care</p>
     </footer>
     <script src="js/main.js"></script>
 </body>
 </html>
-

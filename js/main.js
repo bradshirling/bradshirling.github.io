@@ -1,24 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.section-animate').forEach(section => {
-        observer.observe(section);
-    });
+    document.querySelectorAll('.section-animate').forEach(section => observer.observe(section));
 
-    document.querySelectorAll('.skill-item').forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('active');
-            document.querySelectorAll('.skill-item.active').forEach(activeItem => {
-                if (activeItem !== item) {
-                    activeItem.classList.remove('active');
-                }
-            });
+    const nav = document.querySelector('.nav');
+    const toggleNavState = () => {
+        if (!nav) return;
+        nav.classList.toggle('nav-scrolled', window.scrollY > 10);
+    };
+    toggleNavState();
+    window.addEventListener('scroll', toggleNavState, { passive: true });
+
+    const skillChips = document.querySelectorAll('.skill-chip');
+    const skillPanels = document.querySelectorAll('.skill-panel');
+
+    skillChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const targetId = chip.dataset.skill;
+            skillChips.forEach(c => c.classList.toggle('active', c === chip));
+            skillPanels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
         });
     });
 });
